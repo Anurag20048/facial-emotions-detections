@@ -1,19 +1,9 @@
 from collections import deque
-from pathlib import Path
 import cv2
 import numpy as np
-from keras.models import model_from_json
+from model_loader import load_model
 
-BASE_DIR = Path(__file__).resolve().parent
-MODEL_JSON = BASE_DIR / "model.json"
-MODEL_WEIGHTS = BASE_DIR / "model.h5"
 EMOTION_LABELS = ["Angry", "Disgust", "Fear", "Happy", "Sad", "Surprise", "Neutral"]
-
-def load_model():
-    with MODEL_JSON.open("r", encoding="utf-8") as f:
-        model = model_from_json(f.read())
-    model.load_weights(MODEL_WEIGHTS)
-    return model
 
 def preprocess_face(face):
     face = cv2.resize(face, (48, 48))
@@ -42,7 +32,7 @@ def main():
                 idx = int(np.argmax(averaged))
                 label = f"{EMOTION_LABELS[idx]} ({averaged[idx] * 100:.1f}%)"
                 cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
-                cv2.putText(frame, label, (x, max(y-10, 20)), cv2.FONT_HERSHEY_SIMPLEX, .8, (0,255,0), 2)
+                cv2.putText(frame, label, (x, max(y-10, 20)), cv2.FONT_HERSHEY_SIMPLEX, .8, (0, 255, 0), 2)
             cv2.imshow("Facial Emotion Recognition", frame)
             if cv2.waitKey(1) & 0xFF == ord("q"):
                 break
