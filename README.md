@@ -1,26 +1,54 @@
 # Facial Emotion Recognition with CNN
 
-A computer-vision project that uses a trained Convolutional Neural Network to classify facial expressions into seven emotion classes and provides both real-time webcam inference and a lightweight Streamlit image interface.
+> A computer-vision application that classifies facial expressions into seven emotion categories using a trained Convolutional Neural Network.
 
-## Features
+## 🚀 Overview
+This project demonstrates an end-to-end facial-expression recognition pipeline from image preprocessing and face detection to CNN inference. It provides both a Streamlit image interface and real-time webcam prediction.
+
+## 📸 Demo
+Use the Streamlit interface to upload an image and view the predicted expression category with the model confidence.
+
+## ✨ Features
 - CNN-based facial-expression classification
-- Seven classes: Angry, Disgust, Fear, Happy, Sad, Surprise, Neutral
-- 48x48 grayscale preprocessing
+- Seven emotion categories
+- 48×48 grayscale preprocessing
 - Histogram equalization
 - Haar Cascade face detection
-- Temporal prediction smoothing in webcam mode
+- Temporal smoothing for webcam predictions
 - Confidence display
-- Streamlit image-upload demo
-- Saved Keras model (model.json + model.h5)
-- Original training notebook retained
+- Streamlit image interface
+- Real-time webcam inference
+- Exported Keras model
+- Original training notebook
 
-## Architecture
-The saved model is a Sequential CNN with stacked convolution, batch-normalization, ReLU, average-pooling and dropout blocks, followed by global average pooling and a 7-class softmax output.
+## 🛠️ Tech Stack
+Python · TensorFlow/Keras · OpenCV · NumPy · Streamlit · CNN · Haar Cascade
 
-Input shape: 48 x 48 x 1
+## 📦 Installation
+```bash
+git clone https://github.com/Anurag20048/facial-emotions-detections.git
+cd facial-emotions-detections
+python -m venv .venv
+```
 
-## Project Structure
-~~~text
+Windows:
+```powershell
+.\.venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+```
+
+## ▶️ Usage
+```bash
+streamlit run app.py
+```
+
+For webcam inference:
+```bash
+python webcam.py
+```
+
+## 📁 Project Structure
+```text
 facial-emotions-detections/
 ├── Facial_Emotion_Recognition_using_CNN.ipynb
 ├── model.json
@@ -29,58 +57,25 @@ facial-emotions-detections/
 ├── app.py
 ├── requirements.txt
 └── README.md
-~~~
+```
 
-## Run locally
-~~~bash
-python -m venv .venv
-.venv\Scripts\activate
-pip install -r requirements.txt
-~~~
+## 🔧 Configuration
+The exported model files are included and loaded by the inference applications.
 
-### Streamlit demo
-~~~bash
-streamlit run app.py
-~~~
+## 🧪 Running Tests
+The primary validation workflow is inference through the supplied Streamlit and webcam applications.
 
-Upload a JPG, JPEG, or PNG image containing a face.
+## 🗺️ Roadmap
+- [ ] Improve model evaluation and calibration
+- [ ] Add preprocessing experiments
+- [ ] Add lightweight deployment
 
-### Webcam demo
-~~~bash
-python webcam.py
-~~~
-Press q to stop the webcam application.
+## 🤝 Contributing
+Pull requests are welcome. For major changes, open an issue first.
 
-## Model Pipeline
-~~~text
-Input Image
-    ↓
-Grayscale Conversion
-    ↓
-Haar Cascade Face Detection
-    ↓
-48 x 48 Resize
-    ↓
-Histogram Equalization
-    ↓
-Normalization
-    ↓
-CNN
-    ↓
-7-Class Softmax Prediction
-~~~
+## 📄 License
+See the `LICENSE` file.
 
-## Reproducibility
-The repository includes the original training notebook and exported model files used for inference. The notebook remains the source for the original training dataset, training configuration, and evaluation results.
-
-## Limitations
-- Facial-expression classification is not the same as reliably determining a person's internal emotional state.
-- Performance can vary with lighting, pose, occlusion, image quality, and demographic characteristics.
-- The displayed softmax value is model confidence, not a calibrated probability.
-- This is an educational computer-vision demonstration, not a medical, psychological, hiring, or surveillance system.
-
-## Skills Demonstrated
-Python · TensorFlow/Keras · CNN · OpenCV · Computer Vision · Image Preprocessing · Model Inference · Streamlit · Real-time Webcam Processing
-
-## Author
+## 👤 Author
 **Anurag Pareek**
+- GitHub: https://github.com/Anurag20048
